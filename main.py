@@ -17,11 +17,22 @@ sys.path.insert(0, vendorpath)
 from librarian import __version__, app
 
 
+def ensure_dir(path):
+    try:
+        os.makedirs(path)
+    except OSError:
+        pass
+
+
 class Librarian(App):
     def build(self):
-        inipath = os.path.join(projpath, 'local.ini')
+        ensure_dir('tmp/downloads/content')
+        ensure_dir('tmp/downloads/files')
+        ensure_dir('tmp/outernet')
+        ensure_dir('tmp/zipballs')
+
         server = threading.Thread(target=app.main,
-                                  kwargs={'conf': inipath})
+                                  kwargs={'conf': 'local.ini'})
         server.setDaemon(True)
         server.start()
         return Label(text='Librarian v%s started' % __version__)
