@@ -20,6 +20,24 @@ Development environment and running Librarian
 
 Please see the documentation in ``docs/dev_env.rst``.
 
+Android port
+============
+
+The Android port is based on Kivy_. The code includes a buildozer spec file,
+and a wrapper script called ``main.py``. Please refer to Kivy documentation for
+more information on how to set the development environment up.
+
+Before compiling the app, you must bundle dependencies. You can do this by
+running the following command in the source directory::
+
+    pip install -r conf/requirements.txt -t vendor
+
+Note that you cannot run this command multiple times. You must first remove the
+``vendor`` directory completely after modifying requirements file and
+reinstalling dependencies.
+
+Android port is still being worked on, so don't expect it to work just yet.
+
 Contributing interface translations
 ===================================
 
@@ -78,3 +96,4 @@ Bugs and feature requests can be posted either in our forums_ or in the GitHub
 .. _forums: https://discuss.outernet.is/
 .. _issue tracker: https://github.com/Outernet-Project/librarian/issues
 .. _Python download page: https://www.python.org/downloads/
+.. _Kivy: http://kivy.org/#home
